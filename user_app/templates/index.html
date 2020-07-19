@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>All the Users</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .small-container {
+    display: flex;
+    justify-content: center;
+    }
+    p {
+    margin-left: 20px;
+    }
+    .button {
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.92);
+    margin-top: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 670px;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2 style="text-align: center;">All the Users</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.first_name}}</td>
+        <td>{{ user.last_name}}</td>
+        <td>{{ user.email}}</td>
+        <td>{{ user.age}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<hr style="height: 5px; background-color: black; width: 1200px;">
+<h2 style="text-align: center;">Add a User</h2>
+<form action='/sign_up' method='post'>
+  {% csrf_token %}
+  <div class="small-container">
+    <p>First Name: <input required type='text' name='first_name'></p>
+    <p>Last Name: <input required type='text' name='last_name'></p>
+  </div>
+  <div class="small-container">
+    <p>Email: <input required type='email' name='email'></p>
+    <p>Age: <input required type='text' name='age'></p>
+  </div>
+
+  <button class="button" type='submit'>Create User</button>
+</form>
+
+</body>
+</html>

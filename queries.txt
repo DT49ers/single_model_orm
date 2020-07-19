@@ -1,0 +1,13 @@
+>>> User.objects.create(first_name="Diego", last_name="Torres", email_address="dtorres@google.com", age=35)
+>>> User.objects.create(first_name="Juan", last_name="Smith", email_address="jsmith@google.com", age=40)  
+>>> User.objects.create(first_name="Dianna", last_name="Einstein", email_address="dianna@yahoo.com", age=23)
+>>> User.objects.all()
+>>> User.objects.last()
+>>> User.objects.first()
+>>> update_third = User.objects.get(id=3)
+>>> update_third.last_name = "Pancakes"
+>>> update_third.save()
+>>> delete_user = User.objects.get(id=2)
+>>> delete_user.delete()
+>>> User.objects.all().order_by("first_name")
+>>> User.objects.all().order_by("-first_name")
